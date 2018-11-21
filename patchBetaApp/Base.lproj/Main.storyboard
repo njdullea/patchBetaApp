@@ -64,7 +64,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Home"/>
                                 <connections>
-                                    <segue destination="sHM-Na-ctE" kind="show" id="qed-VK-LtZ"/>
+                                    <action selector="segueHome:" destination="lzy-fH-r7h" eventType="touchUpInside" id="sfB-x3-Uy3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aou-VP-dxE">
@@ -100,10 +100,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="40x-da-vJO"/>
                     </view>
+                    <connections>
+                        <segue destination="gOg-Le-O58" kind="show" identifier="sidebarToResearcher" id="HlP-7p-h7T"/>
+                        <segue destination="sHM-Na-ctE" kind="show" identifier="sidebarToPatient" id="hgb-ny-vzA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fa7-7M-4iy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3230" y="-1408"/>
+            <point key="canvasLocation" x="3108" y="-1358"/>
         </scene>
         <!--Profile-->
         <scene sceneID="tEc-dm-yXx">
@@ -437,8 +441,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="z0f-4X-JRh"/>
-        <segue reference="FxJ-Fs-wvE"/>
-        <segue reference="qed-VK-LtZ"/>
+        <segue reference="HlP-7p-h7T"/>
+        <segue reference="hgb-ny-vzA"/>
         <segue reference="Rq9-NK-0SV"/>
     </inferredMetricsTieBreakers>
 </document>

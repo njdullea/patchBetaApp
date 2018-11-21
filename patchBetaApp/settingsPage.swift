@@ -12,7 +12,7 @@ import AWSMobileClient
 class settingsPage: UIViewController {
     
     @IBAction func signoutButtonPress(_ sender: Any) {
-        
+        //userRole = nil
         AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, error: Error?) in
             //self.showSignIn()
             self.performSegue(withIdentifier: "logoutSegue", sender: nil)

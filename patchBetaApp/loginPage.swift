@@ -13,6 +13,8 @@ import AWSAuthUI
 import AWSDynamoDB
 import AWSMobileClient
 
+var userRole : String?
+
 class loginPage: UIViewController {
     
     //var role : String? = nil
@@ -119,6 +121,7 @@ class loginPage: UIViewController {
 
         if patInfo._role == "patient" {
             print("Role is patient")
+            userRole = "patient"
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "loginToPatient", sender: nil)
             }
@@ -126,6 +129,7 @@ class loginPage: UIViewController {
         }
         else if patInfo._role == "researcher" {
             print("Role is researcher")
+            userRole = "researcher"
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "loginToResearcher", sender: nil)
             }

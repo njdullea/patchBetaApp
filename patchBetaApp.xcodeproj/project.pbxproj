@@ -20,9 +20,12 @@
 		C21940D22194BA94009EDFF4 /* homePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21940D12194BA94009EDFF4 /* homePage.swift */; };
 		C21940D42194C236009EDFF4 /* mainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21940D32194C236009EDFF4 /* mainNavigationController.swift */; };
 		C21940D62194CA9F009EDFF4 /* sideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21940D52194CA9F009EDFF4 /* sideBar.swift */; };
-		C21940DE219E0619009EDFF4 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C21940DD219E0619009EDFF4 /* awsconfiguration.json */; };
 		C21940E0219E0646009EDFF4 /* PatientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21940DF219E0646009EDFF4 /* PatientInfo.swift */; };
 		C25F1AB121A4DEEA00F17628 /* profileDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F1AB021A4DEEA00F17628 /* profileDetails.swift */; };
+		C25F1AB721B3315600F17628 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C25F1AB621B3315600F17628 /* awsconfiguration.json */; };
+		C25F1AB921B3318600F17628 /* CapNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F1AB821B3318600F17628 /* CapNotifications.swift */; };
+		C25F1ABD21BB38D600F17628 /* patHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F1ABC21BB38D600F17628 /* patHomePage.swift */; };
+		C25F1ABF21BB52A100F17628 /* AWSDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F1ABE21BB52A100F17628 /* AWSDBManager.swift */; };
 		C7E9D4C9F2EBEF129B7D7516 /* Pods_patchBetaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA4DC16A3B340C745AFD894 /* Pods_patchBetaApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,9 +47,12 @@
 		C21940D12194BA94009EDFF4 /* homePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homePage.swift; sourceTree = "<group>"; };
 		C21940D32194C236009EDFF4 /* mainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainNavigationController.swift; sourceTree = "<group>"; };
 		C21940D52194CA9F009EDFF4 /* sideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sideBar.swift; sourceTree = "<group>"; };
-		C21940DD219E0619009EDFF4 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		C21940DF219E0646009EDFF4 /* PatientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientInfo.swift; sourceTree = "<group>"; };
 		C25F1AB021A4DEEA00F17628 /* profileDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileDetails.swift; sourceTree = "<group>"; };
+		C25F1AB621B3315600F17628 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = awsconfiguration.json; path = ../../../../Downloads/awsconfiguration.json; sourceTree = "<group>"; };
+		C25F1AB821B3318600F17628 /* CapNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapNotifications.swift; sourceTree = "<group>"; };
+		C25F1ABC21BB38D600F17628 /* patHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = patHomePage.swift; sourceTree = "<group>"; };
+		C25F1ABE21BB52A100F17628 /* AWSDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSDBManager.swift; sourceTree = "<group>"; };
 		C5A5B78415AB1D4D32D2404E /* Pods-patchBetaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patchBetaApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-patchBetaApp/Pods-patchBetaApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,12 +108,13 @@
 			children = (
 				C208190021891527006C4F43 /* AppDelegate.swift */,
 				C208190221891527006C4F43 /* ViewController.swift */,
+				C25F1AB821B3318600F17628 /* CapNotifications.swift */,
 				C21940DF219E0646009EDFF4 /* PatientInfo.swift */,
 				C208190421891527006C4F43 /* Main.storyboard */,
 				C208190721891529006C4F43 /* Assets.xcassets */,
 				C208190921891529006C4F43 /* LaunchScreen.storyboard */,
+				C25F1AB621B3315600F17628 /* awsconfiguration.json */,
 				C208190C21891529006C4F43 /* Info.plist */,
-				C21940DD219E0619009EDFF4 /* awsconfiguration.json */,
 				C208191221891B57006C4F43 /* bleManager.swift */,
 				C21940BD218CC6F0009EDFF4 /* bleStatusPage.swift */,
 				C21940BF218CC9E0009EDFF4 /* loginPage.swift */,
@@ -117,6 +124,8 @@
 				C21940D32194C236009EDFF4 /* mainNavigationController.swift */,
 				C21940D52194CA9F009EDFF4 /* sideBar.swift */,
 				C25F1AB021A4DEEA00F17628 /* profileDetails.swift */,
+				C25F1ABC21BB38D600F17628 /* patHomePage.swift */,
+				C25F1ABE21BB52A100F17628 /* AWSDBManager.swift */,
 			);
 			path = patchBetaApp;
 			sourceTree = "<group>";
@@ -181,8 +190,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C25F1AB721B3315600F17628 /* awsconfiguration.json in Resources */,
 				C208190B21891529006C4F43 /* LaunchScreen.storyboard in Resources */,
-				C21940DE219E0619009EDFF4 /* awsconfiguration.json in Resources */,
 				C208190821891529006C4F43 /* Assets.xcassets in Resources */,
 				C208190621891527006C4F43 /* Main.storyboard in Resources */,
 			);
@@ -256,12 +265,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C25F1ABF21BB52A100F17628 /* AWSDBManager.swift in Sources */,
 				C21940D22194BA94009EDFF4 /* homePage.swift in Sources */,
+				C25F1AB921B3318600F17628 /* CapNotifications.swift in Sources */,
 				C208191321891B57006C4F43 /* bleManager.swift in Sources */,
 				C21940D42194C236009EDFF4 /* mainNavigationController.swift in Sources */,
 				C21940D02194B5E8009EDFF4 /* profilePage.swift in Sources */,
 				C21940BE218CC6F0009EDFF4 /* bleStatusPage.swift in Sources */,
 				C21940E0219E0646009EDFF4 /* PatientInfo.swift in Sources */,
+				C25F1ABD21BB38D600F17628 /* patHomePage.swift in Sources */,
 				C21940C0218CC9E0009EDFF4 /* loginPage.swift in Sources */,
 				C21940CA218CDEB6009EDFF4 /* settingsPage.swift in Sources */,
 				C21940D62194CA9F009EDFF4 /* sideBar.swift in Sources */,

@@ -125,7 +125,6 @@ class loginPage: UIViewController {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "loginToPatient", sender: nil)
             }
-            //self.performSegue(withIdentifier: "loginToResearcher", sender: nil)
         }
         else if patInfo._role == "researcher" {
             print("Role is researcher")

@@ -12,6 +12,11 @@ import AWSDynamoDB
 import AWSMobileClient
 
 class profilePage: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        queryInfo()
+    }
 
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var role: UITextField!
@@ -20,35 +25,11 @@ class profilePage: UIViewController {
     
    
     @IBAction func sendInfo(_ sender: Any) {
-        //queryInfo(sender)
-        sendPatInfo(sender)
+        //queryInfo()
+        //sendPatInfo(sender)
     }
     
-    func sendPatInfo(_ sender:Any) {
-        let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
-        let patInfo: PatientInfo = PatientInfo()
-        patInfo._userId = AWSIdentityManager.default().identityId
-        //patInfo._name = String(name.text!)
-        //patInfo._role = String(role.text!)
-        //patInfo._schedule = String(schedule.text!)
-        //patInfo._trial = String(trialName.text!)
-        patInfo._name = "pat One"
-        patInfo._role = "patient"
-        patInfo._schedule = "01:00"
-        patInfo._trial = "01"
-        
-        dynamoDbObjectMapper.save(patInfo, completionHandler: {
-            (error: Error?) -> Void in
-            
-            if let error = error {
-                print("Amazon DynamoDB Save Error: \(error)")
-                return
-            }
-            print("An item was saved.")
-        })
-    }
-    
-    func queryInfo(_ sender:Any) {
+    func queryInfo() {
         print("Query Info")
         let queryExpression = AWSDynamoDBQueryExpression()
         queryExpression.keyConditionExpression = "#userId = :userId"
@@ -76,6 +57,12 @@ class profilePage: UIViewController {
                     let patInfo = info as? PatientInfo
                     print("patient name")
                     print("\(patInfo!._name!)")
+                    DispatchQueue.main.async {
+                        self.name.text = patInfo!._name!
+                        self.role.text = patInfo!._role!
+                        self.trialName.text = patInfo!._trial
+                        self.schedule.text = patInfo!._schedule
+                    }
                 }
             }
             else {

@@ -9,12 +9,28 @@
 import Foundation
 import CoreBluetooth
 import UIKit
+import AWSDynamoDB
+import AWSMobileClient
 
 let pill_service = CBUUID(string: "6c251c91-dde0-4263-a0a7-d26b4a662b41")
-let pill_administered_charac = CBUUID(string: "ffc7b3e7-3ff6-4672-a060-a47b884f38b1")
-let pill_schedule_charac = CBUUID(string: "3b712824-9972-4283-946b-7257f760b29c")
+let pill_schedule_charac = CBUUID(string: "ffc7b3e7-3ff6-4672-a060-a47b884f38b1")
+let pill_administered_charac  = CBUUID(string: "3b712824-9972-4283-946b-7257f760b29c")
 
 let shared_BLE_Manager = BLE_Manager.sharedBLE
+
+/*
+var switchCount: Int = 0 {
+    didSet {
+        //make a dispatch queue for this?
+        
+        //switchPressedLabel.text = "\(switchCount)"
+        DispatchQueue.main.async { () -> Void in
+            //self.bleStatusLabel.text = "central manager updates"
+            //switchPressedLabel.text = "\(self.switchCount)"
+        }
+    }
+}
+ */
 
 class BLE_Manager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
@@ -120,21 +136,56 @@ class BLE_Manager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         
         if characteristic.uuid == pill_administered_charac {
             //save data to backend
+            NotificationCenter.default.post(name: Notification.Name("pillTaken"), object: nil)
+            print("pill taken!")
+            
+            sendPillTakenData()
+            
         }
     }
     
+    private func sendPillTakenData() {
+        let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
+        
+        let capNote: CapNotifications = CapNotifications()
+        capNote._userId = AWSIdentityManager.default().identityId
+        capNote._dateTime = String(NSDate().timeIntervalSince1970)
+        capNote._capStatus = "inPlace"
+        capNote._pillTaken = "1"
+
+        //let patInfo: PatientInfo = PatientInfo()
+        //patInfo._userId = AWSIdentityManager.default().identityId
+        //patInfo._name = name.text
+        //patInfo._role = role.text
+        //patInfo._schedule = schedule.text
+        //patInfo._trial = trial.text
+        
+        dynamoDbObjectMapper.save(capNote, completionHandler: {
+            (error: Error?) -> Void in
+            
+            if let error = error {
+                print("Amazon DynamoDB Save Error: \(error)")
+                return
+            }
+            print("A Pill Taken item was saved.")
+            //self.findRoleThenSegue()
+        })
+    }
+    /*
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+        
+        if characteristic.uuid == pill_schedule_charac {
+            //print success updating schedule
+        }
         
         if characteristic.uuid == pill_administered_charac {
             //Save data to backend
         }
     }
+    */
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         
-        DispatchQueue.main.async { () -> Void in
-            //self.bleStatusLabel.text = "disconnected"
-        }
         centralManager?.scanForPeripherals(withServices: [pill_service])
         
         bleConnected = false

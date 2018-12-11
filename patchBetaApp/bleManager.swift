@@ -18,20 +18,6 @@ let pill_administered_charac  = CBUUID(string: "3b712824-9972-4283-946b-7257f760
 
 let shared_BLE_Manager = BLE_Manager.sharedBLE
 
-/*
-var switchCount: Int = 0 {
-    didSet {
-        //make a dispatch queue for this?
-        
-        //switchPressedLabel.text = "\(switchCount)"
-        DispatchQueue.main.async { () -> Void in
-            //self.bleStatusLabel.text = "central manager updates"
-            //switchPressedLabel.text = "\(self.switchCount)"
-        }
-    }
-}
- */
-
 class BLE_Manager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     @objc dynamic var bleOn = false
@@ -46,8 +32,10 @@ class BLE_Manager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     //Preventing BLE_Manager initializer from being called elsewhere
     private override init() {
         super.init()
+        
         //Create a queue for the central
-        let centralQueue: DispatchQueue = DispatchQueue(label: "doesLabelMatter?", attributes: .concurrent)
+        let centralQueue: DispatchQueue = DispatchQueue(label: "centralQueueLabel", attributes: .concurrent)
+        
         //Create a central to scan for and manage peripherals
         centralManager = CBCentralManager(delegate: self, queue: centralQueue)
     }
@@ -153,12 +141,6 @@ class BLE_Manager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         capNote._capStatus = "inPlace"
         capNote._pillTaken = "1"
 
-        //let patInfo: PatientInfo = PatientInfo()
-        //patInfo._userId = AWSIdentityManager.default().identityId
-        //patInfo._name = name.text
-        //patInfo._role = role.text
-        //patInfo._schedule = schedule.text
-        //patInfo._trial = trial.text
         
         dynamoDbObjectMapper.save(capNote, completionHandler: {
             (error: Error?) -> Void in

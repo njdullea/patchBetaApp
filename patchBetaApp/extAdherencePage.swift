@@ -8,12 +8,10 @@
 
 import Foundation
 import UIKit
-//import AWSAuthCore
-//import AWSAuthUI
 import AWSDynamoDB
 import AWSMobileClient
 
-class patHomePage: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class extAdherencePage: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -56,6 +54,7 @@ class patHomePage: UIViewController, UITableViewDataSource, UITableViewDelegate 
             ":userId" : AWSIdentityManager.default().identityId!,
         ]
         queryExpression.limit = 5
+        queryExpression.scanIndexForward = false
         
         let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
         
@@ -73,11 +72,10 @@ class patHomePage: UIViewController, UITableViewDataSource, UITableViewDelegate 
                 print(output!.items)
                 for info in output!.items {
                     let capNote = info as? CapNotifications
-                    self.arrayPills.append(capNote!._dateTime!)
+                    let timeString = self.capStringToTimeString(capString: capNote!._dateTime!)
+                    self.arrayPills.append(timeString)
                     //DispatchQueue.main.async {
-                        //Do stuff to screen here
-                        //self.tableView.reloadData()
-                        //self.tableView.reloadData()
+                    
                     //}
                 }
                 DispatchQueue.main.async {
@@ -89,6 +87,19 @@ class patHomePage: UIViewController, UITableViewDataSource, UITableViewDelegate 
                 print("output is nil")
             }
         }
+    }
+    
+    func capStringToTimeString(capString: String) -> String {
+        //Convert string with time since 1970 to NSDate
+        let stringAsDouble = Double(capString)
+        let doubleAsDateTime = NSDate(timeIntervalSince1970: stringAsDouble!)
+        
+        //Convert NSDate to actual time and date string
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.medium
+        formatter.timeStyle = DateFormatter.Style.medium
+        let dateTimeString = formatter.string(from: doubleAsDateTime as Date)
+        return dateTimeString
     }
     
     
@@ -104,12 +115,15 @@ class patHomePage: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         queryPillsTaken()
         
+        /*
         //Testing AWSDBManager
         let testDBMan = AWSDBManager()
         DispatchQueue.main.async {
             testDBMan.findUserRole()
         }
-        //testDBMan.findUserRole()
+        */
         
     }
 }
+
+

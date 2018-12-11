@@ -14,11 +14,8 @@ import AWSMobileClient
 class profileDetails: UIViewController {
     
     @IBOutlet weak var name: UITextField!
-    
     @IBOutlet weak var role: UITextField!
-    
     @IBOutlet weak var schedule: UITextField!
-    
     @IBOutlet weak var trial: UITextField!
     
     @IBAction func finishDetails(_ sender: Any) {
@@ -117,15 +114,16 @@ class profileDetails: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        //self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Profile"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        //self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
 }

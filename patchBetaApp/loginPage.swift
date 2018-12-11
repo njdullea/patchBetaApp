@@ -17,14 +17,9 @@ var userRole : String?
 
 class loginPage: UIViewController {
     
-    //var role : String? = nil
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
-    
     
     override func viewDidLoad() {
         
@@ -87,16 +82,16 @@ class loginPage: UIViewController {
                 print("no error")
             }
             if output != nil {
-                print("output is not nil")
-                print(output!.items)
+                //print("output is not nil")
+                //print(output!.items)
                 //If output!.items == [] segue to finishProfile
                 var count = 0
                 
                 for info in output!.items {
                     count = count + 1
                     let patInformation = info as? PatientInfo
-                    print("patient name")
-                    print("\(patInformation!._role!)")
+                    //print("patient name")
+                    //print("\(patInformation!._role!)")
                     self.segueToRole(patInfo: patInformation!)
                     return
                 }

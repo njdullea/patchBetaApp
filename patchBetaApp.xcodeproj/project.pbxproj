@@ -26,6 +26,8 @@
 		C25F1ABF21BB52A100F17628 /* AWSDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F1ABE21BB52A100F17628 /* AWSDBManager.swift */; };
 		C25F1AC121BF206A00F17628 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25F1AC021BF206A00F17628 /* Role.swift */; };
 		C267134B21BF415400C8D86D /* optionsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267134A21BF415400C8D86D /* optionsPage.swift */; };
+		C267134D21C0759300C8D86D /* resHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267134C21C0759300C8D86D /* resHomePage.swift */; };
+		C267134F21C075BF00C8D86D /* patHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267134E21C075BF00C8D86D /* patHomePage.swift */; };
 		C7E9D4C9F2EBEF129B7D7516 /* Pods_patchBetaApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA4DC16A3B340C745AFD894 /* Pods_patchBetaApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		C25F1ABE21BB52A100F17628 /* AWSDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSDBManager.swift; sourceTree = "<group>"; };
 		C25F1AC021BF206A00F17628 /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		C267134A21BF415400C8D86D /* optionsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionsPage.swift; sourceTree = "<group>"; };
+		C267134C21C0759300C8D86D /* resHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resHomePage.swift; sourceTree = "<group>"; };
+		C267134E21C075BF00C8D86D /* patHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = patHomePage.swift; sourceTree = "<group>"; };
 		C5A5B78415AB1D4D32D2404E /* Pods-patchBetaApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-patchBetaApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-patchBetaApp/Pods-patchBetaApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +130,8 @@
 				C25F1ABE21BB52A100F17628 /* AWSDBManager.swift */,
 				C25F1AC021BF206A00F17628 /* Role.swift */,
 				C267134A21BF415400C8D86D /* optionsPage.swift */,
+				C267134C21C0759300C8D86D /* resHomePage.swift */,
+				C267134E21C075BF00C8D86D /* patHomePage.swift */,
 			);
 			path = patchBetaApp;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C25F1ABF21BB52A100F17628 /* AWSDBManager.swift in Sources */,
+				C267134F21C075BF00C8D86D /* patHomePage.swift in Sources */,
 				C21940D22194BA94009EDFF4 /* homePage.swift in Sources */,
 				C25F1AB921B3318600F17628 /* CapNotifications.swift in Sources */,
 				C208191321891B57006C4F43 /* bleManager.swift in Sources */,
@@ -277,6 +284,7 @@
 				C21940E0219E0646009EDFF4 /* PatientInfo.swift in Sources */,
 				C25F1ABD21BB38D600F17628 /* extAdherencePage.swift in Sources */,
 				C21940C0218CC9E0009EDFF4 /* loginPage.swift in Sources */,
+				C267134D21C0759300C8D86D /* resHomePage.swift in Sources */,
 				C208190321891527006C4F43 /* ViewController.swift in Sources */,
 				C25F1AB121A4DEEA00F17628 /* profileDetails.swift in Sources */,
 				C208190121891527006C4F43 /* AppDelegate.swift in Sources */,

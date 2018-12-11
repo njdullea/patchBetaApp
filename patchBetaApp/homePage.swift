@@ -87,6 +87,18 @@ class homePage: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updatePillCounter), name: Notification.Name("pillTaken"), object: nil)
         
         //queryPillsTaken()
+        //print("Uers Name Home PAge")
+        //print(AWSIdentityManager.default().identityId!)
+        
     }
+    
+    //TESTING IF THIS WORKS PROPERLY BY CHECKING 'usersName' IN EXT ADHERENCE PAGE
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "expAdherenceSegue") {
+            let vc = segue.destination as! extAdherencePage
+            vc.usersName = AWSIdentityManager.default().identityId!
+        }
+    }
+    
 }
 

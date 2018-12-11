@@ -244,7 +244,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Expand Adherence History"/>
                                 <connections>
-                                    <segue destination="3Da-Yg-JAK" kind="show" id="TkA-9N-Ydw"/>
+                                    <segue destination="3Da-Yg-JAK" kind="show" identifier="expAdherenceSegue" id="TkA-9N-Ydw"/>
                                 </connections>
                             </button>
                         </subviews>

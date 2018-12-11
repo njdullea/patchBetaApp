@@ -5,6 +5,8 @@
 //  Created by Nathan Dullea on 12/7/18.
 //  Copyright © 2018 PATCH. All rights reserved.
 //
+// The class (Extended adherence history) takes a userId and shows the users adherence
+// history
 
 import Foundation
 import UIKit
@@ -16,6 +18,9 @@ class extAdherencePage: UIViewController, UITableViewDataSource, UITableViewDele
     @IBOutlet weak var tableView: UITableView!
     
     var arrayPills = Array<String>()
+    //This might be some other type, need to check it
+    //This variable is set by the 'prepare for segue' in the home page
+    var usersName: String? = nil
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,7 +46,7 @@ class extAdherencePage: UIViewController, UITableViewDataSource, UITableViewDele
     }
     
     
-    func queryPillsTaken() {
+    func queryPillsTaken(user: String?) {
         print("querying for pills taken")
         
         let queryExpression = AWSDynamoDBQueryExpression()
@@ -50,8 +55,11 @@ class extAdherencePage: UIViewController, UITableViewDataSource, UITableViewDele
             "#userId" : "userId",
         ]
         
+        //queryExpression.expressionAttributeValues = [
+        //    ":userId" : AWSIdentityManager.default().identityId!,
+        //]
         queryExpression.expressionAttributeValues = [
-            ":userId" : AWSIdentityManager.default().identityId!,
+            ":userId" : user!,
         ]
         queryExpression.limit = 5
         queryExpression.scanIndexForward = false
@@ -60,16 +68,16 @@ class extAdherencePage: UIViewController, UITableViewDataSource, UITableViewDele
         
         
         dynamoDbObjectMapper.query(CapNotifications.self, expression: queryExpression) { (output : AWSDynamoDBPaginatedOutput?, error: Error?) in
-            print("receive stuff back")
+            //print("receive stuff back")
             if error != nil {
-                print("The request failed. Error: \(String(describing: error))")
+                //print("The request failed. Error: \(String(describing: error))")
             }
             else {
-                print("no error")
+                //print("no error")
             }
             if output != nil {
-                print("output is not nil")
-                print(output!.items)
+                //print("output is not nil")
+                //print(output!.items)
                 for info in output!.items {
                     let capNote = info as? CapNotifications
                     let timeString = self.capStringToTimeString(capString: capNote!._dateTime!)
@@ -113,7 +121,7 @@ class extAdherencePage: UIViewController, UITableViewDataSource, UITableViewDele
         
         //NotificationCenter.default.addObserver(self, selector: #selector(updatePillCounter), name: Notification.Name("pillTaken"), object: nil)
         
-        queryPillsTaken()
+        queryPillsTaken(user:usersName)
         
         /*
         //Testing AWSDBManager
@@ -123,6 +131,13 @@ class extAdherencePage: UIViewController, UITableViewDataSource, UITableViewDele
         }
         */
         
+        /*
+         //Testing the prepare for segue from homePage
+         
+        */
+        //print("User Name")
+        //print(usersName!)
+ 
     }
 }
 

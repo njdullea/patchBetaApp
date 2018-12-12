@@ -8,7 +8,7 @@
 //  This class manages storing, and retrieving information from the
 //  tables hosted in the DB in AWS mobile hub.
 
-//THIS MIGHT BE POINTLESS BECAUSE IDK HOW TO WAIT TILL THE INFORMATION COMES BACK!
+//THIS FILE IS CURRENTLY UNUSED BY ANYTHING
 
 import Foundation
 import AWSMobileClient

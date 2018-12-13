@@ -6,6 +6,7 @@
 //  Copyright © 2018 PATCH. All rights reserved.
 //
 
+//THIS PAGE IS NOT USED RIGHT NOW, BUT WILL BE TO PROMOTE TYPE SAFETY
 import Foundation
 
 enum Role {

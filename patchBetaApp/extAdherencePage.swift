@@ -66,7 +66,6 @@ class extAdherencePage: UIViewController, UITableViewDataSource, UITableViewDele
         
         let dynamoDbObjectMapper = AWSDynamoDBObjectMapper.default()
         
-        
         dynamoDbObjectMapper.query(CapNotifications.self, expression: queryExpression) { (output : AWSDynamoDBPaginatedOutput?, error: Error?) in
             //print("receive stuff back")
             if error != nil {

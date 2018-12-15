@@ -16,11 +16,13 @@ class resHomePage: UIViewController, UITableViewDataSource, UITableViewDelegate 
     @IBOutlet weak var resHomeTable: UITableView!
     
     
-    var arrayPatients = Array<String>()
+    var arrayPatients = Array<String?>()
+    var arrayPatientsIDs = Array<String?>()
+    var selectedUser : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrayPatients.append("Hello")
+        //arrayPatients.append("Hello")
         self.queryPatients()
     }
     
@@ -43,7 +45,12 @@ class resHomePage: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        print(indexPath)
+        print(indexPath[1])
+        self.selectedUser = indexPath[1]
+        performSegue(withIdentifier: "resToExtAdherence", sender: self)
     }
+    
     //IT IS WORKING AND GETTING THE PATIENTS :)
     func queryPatients() {
         let scanExpression = AWSDynamoDBScanExpression()
@@ -58,10 +65,24 @@ class resHomePage: UIViewController, UITableViewDataSource, UITableViewDelegate 
                 for patient in paginatedOutput.items as! [PatientInfo] {
                     // Do something with book.
                     print(patient)
+                    print(patient._userId!)
+                    let usersID = patient._userId
+                    let usersName = patient._name
+                    self.arrayPatients.append(usersName)
+                    self.arrayPatientsIDs.append(usersID)
                 }
+            }
+            DispatchQueue.main.async {
+                self.resHomeTable.reloadData()
             }
             return()
         })
     }
-    ///////////////////
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "resToExtAdherence") {
+            let vc = segue.destination as! extAdherencePage
+            vc.usersName = self.arrayPatientsIDs[self.selectedUser!]
+        }
+    }
 }

@@ -214,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZRY-lb-I3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1950" y="-1084"/>
+            <point key="canvasLocation" x="2140" y="-1535"/>
         </scene>
         <!--Home-->
         <scene sceneID="mQO-LY-BjX">
@@ -387,6 +387,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="resHomeTable" destination="0FD-yU-XRH" id="9T4-pe-jI0"/>
+                        <segue destination="3Da-Yg-JAK" kind="show" identifier="resToExtAdherence" id="q8Q-fx-TgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2E4-Mm-Umy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -437,6 +438,7 @@
         <segue reference="zII-SK-6uX"/>
         <segue reference="FxJ-Fs-wvE"/>
         <segue reference="CU9-ii-Naw"/>
+        <segue reference="q8Q-fx-TgD"/>
         <segue reference="Rq9-NK-0SV"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -166,6 +166,8 @@ class BLE_Manager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     */
     
+    //func peri
+    
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         
         centralManager?.scanForPeripherals(withServices: [pill_service])

@@ -27,9 +27,22 @@ class loginPage: UIViewController {
         
         if !AWSSignInManager.sharedInstance().isLoggedIn {
             presentAuthUIViewController()
+            print("not logged in")
         }
         else {
             self.findRoleThenSegue()
+            
+            /*
+            //Keeping this here for when already logged in issue arrises
+            AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, error: Error?) in
+                //self.showSignIn()
+                self.performSegue(withIdentifier: "profileToLogin", sender: nil)
+                // print("Sign-out Successful: \(signInProvider.getDisplayName)");
+                
+            })
+            presentAuthUIViewController()
+            */
+            print("logged in")
             //self.performSegue(withIdentifier: "loginToPatient", sender: nil)
             //self.performSegue(withIdentifier: "loginToResearcher", sender: nil)
         }
@@ -105,6 +118,7 @@ class loginPage: UIViewController {
             }
             else {
                 print("output is nil")
+                print("error no accout")
             }
         }
     }

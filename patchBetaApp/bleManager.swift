@@ -12,6 +12,14 @@ import UIKit
 import AWSDynamoDB
 import AWSMobileClient
 
+/*BJN Services
+    - Current Time Service 0x1805
+    - Unknown Service C7FCEE6F-E7E0-8C8A-B745-FDE27C268EFD
+*/
+
+//This is for testing with BJNs PB
+//let pill_service = CBUUID(string:"C7FCEE6F-E7E0-8C8A-B745-FDE27C268EFD")
+
 let pill_service = CBUUID(string: "6c251c91-dde0-4263-a0a7-d26b4a662b41")
 let pill_schedule_charac = CBUUID(string: "ffc7b3e7-3ff6-4672-a060-a47b884f38b1")
 let pill_administered_charac  = CBUUID(string: "3b712824-9972-4283-946b-7257f760b29c")
